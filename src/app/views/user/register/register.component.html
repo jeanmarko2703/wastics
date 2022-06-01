@@ -1,0 +1,186 @@
+<div *ngIf="page==0">
+
+  <div class="card auth-card height">
+    <div class="container d-flex justify-content-center align-items-center">
+  
+      
+  
+      <div class="row ">
+        <div class="col-md-6 col-sm-12 centerPosition " >
+
+          <button class="registerButton" (click)="nextPage()" >Auswahl Abfallerzeuger</button>
+          
+        </div>
+        <span id="spacer" ></span>
+        <div class="col-md-6 col-sm-12 centerPosition " >
+          <button class="registerButton" (click)="nextPage()">Abfallentsorger</button>
+          
+        </div>
+      </div>
+      
+  
+    </div>
+  </div>
+
+</div>
+<div *ngIf="page==1">
+
+  <div class="card auth-card">
+    <div class=" position-relative image-side ">
+      <app-info-registration></app-info-registration>
+    </div>
+  
+    <div class="form-side">
+  
+      <h6 class="mb-4"> <strong>Register</strong> </h6>
+  
+      <form #registerForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+  
+        <div class="row">
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #name="ngModel" name="name" placeholder="Vorname" />
+  
+            <div *ngIf="!name.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Vorname</div>
+          </label>
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #companyname="ngModel" name="companyname" placeholder="Firmenname" />
+  
+            <div *ngIf="!name.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Firmenname</div>
+          </label>
+        </div>
+  
+        <div class="row ">
+  
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #lastname="ngModel" name="lastname" placeholder="Nachname"  />
+  
+            <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Nachname</div>
+          </label>
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required email ngModel #email="ngModel" name="lastname" placeholder="Email" />
+  
+            <div *ngIf="!email.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Email</div>
+            <div *ngIf="email?.errors?.email && registerForm.submitted" class="invalid-tooltip">Geben Sie eine gültige E-Mail-Adresse ein</div>
+          </label>
+  
+  
+        </div>
+        <div class="row">
+  
+  
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+  
+            <input class="form-control" type="password" placeholder="Passwort" required ngModel #password="ngModel"
+              name="password" />
+  
+            <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Passwort</div>
+          </label>
+  
+  
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+  
+            <input class="form-control" type="password" placeholder="Passwort reh" required ngModel #validpassword="ngModel"
+              name="password verification" />
+  
+  
+            <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Passwort reh</div>
+          </label>
+  
+        </div>
+  
+  
+  
+        <div class="d-flex justify-content-between align-items-center">
+          <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+            [isDisabled]="buttonDisabled" click="onLoginClick()">Nächste
+          </app-state-button>
+  
+        </div>
+      </form>
+  
+    </div>
+  </div>
+
+</div>
+<div *ngIf="page==2">
+
+  <div class="card auth-card">
+    <div class=" position-relative image-side ">
+      <app-info-registration></app-info-registration>
+    </div>
+  
+    <div class="form-side">
+  
+      <h6 class="mb-4"> <strong>Register</strong> </h6>
+  
+      <form #registerForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #name="ngModel" name="country" placeholder="Land" />
+  
+            <div *ngIf="!name.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Land</div>
+          </label>
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #location="ngModel" name="location" placeholder="Ort" />
+  
+            <div *ngIf="!name.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Ort</div>
+          </label>
+        </div>
+
+        <div class="row">
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #street="ngModel" name="street" placeholder="Straße" />
+  
+            <div *ngIf="!name.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Straße</div>
+          </label>
+          <label class="form-group has-float-label col-md-6 col-sm-12">
+            <input class="form-control" required ngModel #location="ngModel" name="streetNumber" placeholder="Nr." />
+  
+            <div *ngIf="!name.valid && registerForm.submitted" class="invalid-tooltip">ungültiger Nr.</div>
+          </label>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+            [isDisabled]="buttonDisabled" click="onLoginClick()">Nächste
+          </app-state-button>
+  
+        </div>
+        
+      
+        
+        
+      </form>
+  
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="page==3">
+
+  <div class="card auth-card">
+    <div class=" position-relative image-side ">
+      <app-info-registration></app-info-registration>
+    </div>
+  
+    <div class="form-side">
+  
+      <h1>Glückwünsche</h1>
+      <p>Herzlichen Glückwunsch, Ihre Registrierung wurde 
+        erfolgreich abgeschlossen</p>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+            [isDisabled]="buttonDisabled" routerLink="/apptest/dashboard">gehe zum Armaturenbrett
+          </app-state-button>
+  
+        </div>
+      
+  
+    </div>
+  </div>
+
+</div>
+
+<simple-notifications></simple-notifications>

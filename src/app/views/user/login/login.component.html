@@ -1,0 +1,49 @@
+<div class="card auth-card">
+
+  <div class=" position-relative image-side ">
+   <app-info-login></app-info-login>
+  </div>
+
+
+  <div class="form-side">
+
+    <h6 class="mb-4"> <strong>Login</strong></h6>
+
+    <form #loginForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+      <label class="form-group has-float-label">
+        <input class="form-control inputColor" required email ngModel #email="ngModel" name="email" placeholder="email" />
+
+        <div *ngIf="!email.valid && loginForm.submitted" class="invalid-tooltip">Email is required!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control inputColor" type="password" placeholder="passwort" required ngModel #password="ngModel"
+          name="password" />
+
+        <div *ngIf="!password.valid && loginForm.submitted" class="invalid-tooltip">Password is required!</div>
+      </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <a routerLink="/user/forgot-password">Passwort vergessen?</a>
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled" click="onLoginClick()" routerLink="/apptest/dashboard" >
+          Einloggen
+
+        </app-state-button>
+      </div>
+      <span id="spacer"></span>
+
+
+      <div class="d-flex  " id="register" >
+        <p>Noch nicht registriert?</p>
+        <span id="spacer"></span>
+        <a routerLink="/user/register"><strong>Account anlegen </strong></a>
+
+
+      </div>
+
+
+
+    </form>
+
+  </div>
+</div>
+<simple-notifications></simple-notifications>
